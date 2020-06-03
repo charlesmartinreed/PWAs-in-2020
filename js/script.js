@@ -12,6 +12,16 @@ const coffeeOptions = [
   { name: "Accusantium", image: "../images/coffee9.jpg" },
 ];
 
+// if browser supports the service worker api
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    this.navigator.serviceWorker
+      .register("/serviceWorker.js")
+      .then((res) => console.log("service worker registered"))
+      .catch((err) => console.error("service worker not registered"));
+  });
+}
+
 const displayCoffeeOpts = () => {
   let output = "";
 
